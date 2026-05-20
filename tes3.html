@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Arveluna Candle - Lilin Aromaterapi</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #ffffff;
+            color: #1a1a1a;
+            line-height: 1.5;
+        }
+
+        /* ========== NAVIGASI ========== */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 5%;
+            background: white;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid #eee;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-decoration: none;
+            color: #1a1a1a;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: #1a1a1a;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #b87c4e;
+        }
+
+        .nav-icons {
+            display: flex;
+            gap: 1.2rem;
+            align-items: center;
+        }
+
+        .nav-icons span {
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: color 0.3s;
+        }
+
+        .nav-icons span:hover {
+            color: #b87c4e;
+        }
+
+        /* ========== BREADCRUMB ========== */
+        .breadcrumb {
+            margin-top: 100px;
+            padding: 1rem 5%;
+            font-size: 0.8rem;
+            color: #666;
+        }
+
+        .breadcrumb a {
+            color: #666;
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            color: #b87c4e;
+        }
+
+        /* ========== PRODUCT SECTION ========== */
+        .product-section {
+            padding: 2rem 5%;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 3rem;
+        }
+
+        /* Gallery Kiri */
+        .product-gallery {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .main-image {
+            background: #f5f0e8;
+            border-radius: 20px;
+            height: 450px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 8rem;
+            margin-bottom: 1rem;
+        }
+
+        .thumbnail-list {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .thumbnail {
+            width: 80px;
+            height: 80px;
+            background: #f5f0e8;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: all 0.3s;
+        }
+
+        .thumbnail:hover, .thumbnail.active {
+            border-color: #b87c4e;
+        }
+
+        /* Info Kanan */
+        .product-info {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .vendor {
+            font-size: 0.8rem;
+            color: #b87c4e;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-subtitle {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .price {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #b87c4e;
+            margin: 1rem 0;
+        }
+
+        /* Badges */
+        .badges {
+            display: flex;
+            gap: 1rem;
+            margin: 1rem 0;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            background: #f0f0f0;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 500;
+        }
+
+        .badge.green {
+            background: #e8f5e9;
+            color: #2e7d32;
+        }
+
+        /* Size Options */
+        .size-section {
+            margin: 1.5rem 0;
+        }
+
+        .size-label {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .size-options {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .size-btn {
+            padding: 0.5rem 1.5rem;
+            border: 1px solid #ddd;
+            background: white;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .size-btn:hover, .size-btn.active {
+            background: #b87c4e;
+            color: white;
+            border-color: #b87c4e;
+        }
+
+        /* Action Buttons */
+        .action-buttons {
+            display: flex;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .btn-add {
+            flex: 1;
+            padding: 1rem;
+            background: #1a1a1a;
+            color: white;
+            border: none;
+            border-radius: 40px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+
+        .btn-add:hover {
+            background: #b87c4e;
+        }
+
+        .btn-buy {
+            flex: 1;
+            padding: 1rem;
+            background: #b87c4e;
+            color: white;
+            border: none;
+            border-radius: 40px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+
+        .btn-buy:hover {
+            background: #9a663e;
+        }
+
+        /* Accordion Sections */
+        .accordion-section {
+            margin-top: 1.5rem;
+            border-top: 1px solid #eee;
+        }
+
+        .accordion-item {
+            border-bottom: 1px solid #eee;
+        }
+
+        .accordion-header {
+            padding: 1rem 0;
+            display: flex;
+            justify-content: space-between;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            padding: 0;
+            color: #666;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .accordion-content.active {
+            max-height: 300px;
+            padding-bottom: 1rem;
+        }
+
+        /* ========== YOU MAY ALSO LIKE ========== */
+        .also-like {
+            padding: 3rem 5%;
+            background: #faf7f2;
+        }
+
+        .also-like h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .like-card {
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .like-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .like-image {
+            background: #f5f0e8;
+            border-radius: 16px;
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        .like-category {
+            font-size: 0.7rem;
+            color: #b87c4e;
+            letter-spacing: 1px;
+        }
+
+        .like-title {
+            font-weight: 600;
+            margin: 0.5rem 0;
+            font-size: 0.9rem;
+        }
+
+        .like-price {
+            color: #b87c4e;
+            font-weight: 700;
+        }
+
+        /* ========== FOOTER ========== */
+        .footer {
+            background: #1a1a1a;
+            color: #ccc;
+            padding: 3rem 5%;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-col h4 {
+            color: white;
+            margin-bottom: 1rem;
+            font-size: 1rem;
+        }
+
+        .footer-col p, .footer-col a {
+            color: #999;
+            text-decoration: none;
+            font-size: 0.85rem;
+            line-height: 1.8;
+        }
+
+        .footer-col a:hover {
+            color: #b87c4e;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-icon {
+            width: 35px;
+            height: 35px;
+            background: #333;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .social-icon:hover {
+            background: #b87c4e;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #333;
+            font-size: 0.75rem;
+            color: #666;
+        }
+
+        /* Chat Button */
+        .chat-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #b87c4e;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            cursor: pointer;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            transition: all 0.3s;
+            z-index: 100;
+        }
+
+        .chat-btn:hover {
+            transform: scale(1.1);
+            background: #9a663e;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .product-section {
+                flex-direction: column;
+            }
+
+            .main-image {
+                height: 350px;
+                font-size: 6rem;
+            }
+
+            .product-title {
+                font-size: 1.5rem;
+            }
+
+            .price {
+                font-size: 1.4rem;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ========== NAVIGASI ========== -->
+    <nav class="navbar">
+        <a href="#" class="logo">ARVELUNA</a>
+        <ul class="nav-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Aromatic Candles</a></li>
+            <li><a href="#">Essential Oil</a></li>
+            <li><a href="#">Diffuser</a></li>
+            <li><a href="#">Gift Set</a></li>
+        </ul>
+        <div class="nav-icons">
+            <span>🔍</span>
+            <span>👤</span>
+            <span>🛒</span>
+        </div>
+    </nav>
+
+    <!-- ========== BREADCRUMB ========== -->
+    <div class="breadcrumb">
+        <a href="#">Home</a> / <a href="#">Aromatic Candles</a> / <span style="color:#b87c4e;">Buai Aromatic Jar Candles by Arveluna</span>
+    </div>
+
+    <!-- ========== PRODUCT SECTION ========== -->
+    <section class="product-section">
+        <!-- Gallery Kiri -->
+        <div class="product-gallery">
+            <div class="main-image" id="mainImage">
+                🕯️✨🌸
+            </div>
+            <div class="thumbnail-list">
+                <div class="thumbnail active" onclick="changeImage('🕯️✨🌸')">🕯️✨🌸</div>
+                <div class="thumbnail" onclick="changeImage('🕯️🌙✨')">🕯️🌙✨</div>
+                <div class="thumbnail" onclick="changeImage('🕯️🌿✨')">🕯️🌿✨</div>
+                <div class="thumbnail" onclick="changeImage('🕯️🍊✨')">🕯️🍊✨</div>
+            </div>
+        </div>
+
+        <!-- Info Kanan -->
+        <div class="product-info">
+            <div class="vendor">ARVELUNA</div>
+            <h1 class="product-title">Buai Aromatic Jar Candles</h1>
+            <div class="product-subtitle">by Arveluna Candle</div>
+            <div class="price">Rp 120.000,00</div>
+
+            <!-- Badges -->
+            <div class="badges">
+                <span class="badge green">✓ Halal</span>
+                <span class="badge green">✓ No Animal Testing</span>
+                <span class="badge green">✓ Natural Ingredients</span>
+            </div>
+
+            <!-- Size Options -->
+            <div class="size-section">
+                <div class="size-label">Size:</div>
+                <div class="size-options">
+                    <button class="size-btn active" onclick="selectSize(this, '90 gr', 120000)">90 gr</button>
+                    <button class="size-btn" onclick="selectSize(this, '180 gr', 195000)">180 gr</button>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="action-buttons">
+                <button class="btn-add" onclick="addToCart()">Add To Cart</button>
+                <button class="btn-buy" onclick="buyNow()">Buy It Now</button>
+            </div>
+
+            <!-- Accordion: Description -->
+            <div class="accordion-section">
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        Description <span>▼</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Nikmati kehangatan dan kenyamanan dengan Buai Aromatic Jar Candle. Lilin dari campuran soy wax dan beeswax alami, diperkaya dengan minyak atsiri cinnamon, vanila, dan lavender, serta dekorasi bunga kering dari kebun Rumah Arveluna.</p>
+                        <p style="margin-top: 0.5rem;"><strong>Key Emotion:</strong> Calming, Warm, Sweet, Caring</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        Cara Pakai <span>▼</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Nyalakan lilin dengan korek api atau pemantik api. Letakkan di permukaan yang stabil dan tahan panas. Jangan biarkan lilin menyala tanpa pengawasan. Pastikan ruangan memiliki sirkulasi udara yang baik.</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        Ingredients <span>▼</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Soy wax, Beeswax, Essential Oil (Cinnamon, Vanilla, Lavender), Dried Flowers from Arveluna Garden.</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        Benefit <span>▼</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>✓ Menenangkan pikiran<br>✓ Meningkatkan mood<br>✓ Menghilangkan stres<br>✓ Membantu tidur lebih nyenyak</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        Best For <span>▼</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>✓ Relaksasi setelah bekerja<br>✓ Meditasi & yoga<br>✓ Hadiah untuk orang tersayang<br>✓ Menciptakan suasana nyaman di rumah</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== YOU MAY ALSO LIKE ========== -->
+    <section class="also-like">
+        <h2>You May Also Like</h2>
+        <div class="product-grid">
+            <div class="like-card" onclick="alert('Rayu Aromatic Jar Candles')">
+                <div class="like-image">🕯️💛</div>
+                <div class="like-category">CANDLE</div>
+                <div class="like-title">Rayu Aromatic Jar Candles by Arveluna</div>
+                <div class="like-price">From Rp 120.000,00</div>
+            </div>
+            <div class="like-card" onclick="alert('1963 Aromatic Jar Candles')">
+                <div class="like-image">🕯️🤎</div>
+                <div class="like-category">CANDLE</div>
+                <div class="like-title">1963 Aromatic Jar Candles by Arveluna</div>
+                <div class="like-price">From Rp 120.000,00</div>
+            </div>
+            <div class="like-card" onclick="alert('Buai Eau de Parfum')">
+                <div class="like-image">🌸✨</div>
+                <div class="like-category">EAU DE PARFUM</div>
+                <div class="like-title">Buai Eau de Parfum by Arveluna</div>
+                <div class="like-price">From Rp 105.000,00</div>
+            </div>
+            <div class="like-card" onclick="alert('Buai Signature Essential Oil')">
+                <div class="like-image">🌿✨</div>
+                <div class="like-category">ESSENTIAL OIL</div>
+                <div class="like-title">Buai Signature Essential Oil Blend</div>
+                <div class="like-price">From Rp 98.000,00</div>
+            </div>
+            <div class="like-card" onclick="alert('Body Lotion Buai')">
+                <div class="like-image">🧴✨</div>
+                <div class="like-category">BODY LOTION</div>
+                <div class="like-title">Body Lotion Arveluna BUAI</div>
+                <div class="like-price">From Rp 85.000,00</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== FOOTER ========== -->
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>ARVELUNA</h4>
+                <p>Lilin aromaterapi dari bahan alami untuk menghadirkan ketenangan di setiap ruangan Anda.</p>
+                <div class="social-icons">
+                    <div class="social-icon" onclick="alert('Instagram: @arveluna.candle')">📷</div>
+                    <div class="social-icon" onclick="alert('Facebook: Arveluna Candle')">📘</div>
+                    <div class="social-icon" onclick="alert('TikTok: @arveluna')">🎵</div>
+                    <div class="social-icon" onclick="alert('Shopee: Arveluna Official')">🛍️</div>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Customer Service</h4>
+                <p>Mon-Sat, 10am-5pm<br>📞 +62 812 3456 7890<br>✉️ hello@arveluna.com</p>
+            </div>
+            <div class="footer-col">
+                <h4>Flagship Store</h4>
+                <p>Rumah Arveluna Indonesia<br>Jl. Raya Kebayoran Lama No. 123, Jakarta Selatan</p>
+                <p><strong>Online Store:</strong><br>Tokopedia: ARVELUNA SHOP<br>Shopee: Arveluna Official Store</p>
+            </div>
+            <div class="footer-col">
+                <h4>WhatsApp</h4>
+                <p>📱 +62 812 3456 7890 (Jakarta)<br>📱 +62 822 3336 6664 (Jawa Tengah)</p>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2024 Arveluna Candle. All rights reserved. | Lilin Aromaterapi untuk ketenangan Anda</p>
+        </div>
+    </footer>
+
+    <!-- Chat Button -->
+    <div class="chat-btn" onclick="alert('Halo! Ada yang bisa kami bantu? 💬')">
+        💬
+    </div>
+
+    <script>
+        // Change Gallery Image
+        function changeImage(emoji) {
+            document.getElementById('mainImage').innerHTML = emoji;
+            document.querySelectorAll('.thumbnail').forEach(thumb => {
+                thumb.classList.remove('active');
+            });
+            event.target.classList.add('active');
+        }
+
+        // Select Size
+        let currentPrice = 120000;
+        let currentSize = '90 gr';
+
+        function selectSize(btn, size, price) {
+            document.querySelectorAll('.size-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            currentSize = size;
+            currentPrice = price;
+            document.querySelector('.price').innerHTML = `Rp ${price.toLocaleString('id-ID')},00`;
+        }
+
+        // Add to Cart
+        function addToCart() {
+            alert(`🛒 ${currentSize} Arveluna Candle ditambahkan ke keranjang!\nTotal: Rp ${currentPrice.toLocaleString('id-ID')},00`);
+        }
+
+        function buyNow() {
+            alert(`💳 Lanjutkan pembayaran untuk ${currentSize} Arveluna Candle\nTotal: Rp ${currentPrice.toLocaleString('id-ID')},00`);
+        }
+
+        // Accordion Toggle
+        function toggleAccordion(header) {
+            const content = header.nextElementSibling;
+            const isActive = content.classList.contains('active');
+            
+            document.querySelectorAll('.accordion-content').forEach(c => {
+                c.classList.remove('active');
+            });
+            
+            if (!isActive) {
+                content.classList.add('active');
+            }
+        }
+
+        // Account Icon
+        document.querySelector('.nav-icons span:nth-child(2)').addEventListener('click', function() {
+            alert('Halaman Akun akan segera hadir ✨\nSilakan login atau daftar');
+        });
+
+        // Cart Icon
+        document.querySelector('.nav-icons span:last-child').addEventListener('click', function() {
+            alert('Keranjang belanja Anda masih kosong 🛒');
+        });
+    </script>
+</body>
+</html>

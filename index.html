@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=yes">
     <title>Arveluna Candle - Lilin Aromaterapi</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
@@ -19,42 +19,54 @@
             line-height: 1.5;
         }
 
-        /* ========== NAVIGASI ========== */
+        /* ========== NAVIGASI RESPONSIF ========== */
         .navbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1.5rem 5%;
+            padding: 1rem 4%;
             background: white;
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
             border-bottom: 1px solid #eee;
+            flex-wrap: wrap;
         }
 
         .logo {
             font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
+            font-size: 1.4rem;
             font-weight: 700;
             letter-spacing: 1px;
             text-decoration: none;
             color: #1a1a1a;
         }
 
+        /* Hamburger menu untuk HP */
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+
         .nav-links {
             display: flex;
-            gap: 2rem;
+            gap: 1.5rem;
             list-style: none;
             align-items: center;
+            transition: all 0.3s ease;
         }
 
         .nav-links a {
             color: #1a1a1a;
             text-decoration: none;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             font-weight: 500;
             transition: color 0.3s;
+            white-space: nowrap;
         }
 
         .nav-links a:hover {
@@ -63,13 +75,13 @@
 
         .nav-icons {
             display: flex;
-            gap: 1.2rem;
+            gap: 1rem;
             align-items: center;
         }
 
         .nav-icons span {
             cursor: pointer;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             transition: color 0.3s;
         }
 
@@ -79,10 +91,12 @@
 
         /* ========== BREADCRUMB ========== */
         .breadcrumb {
-            margin-top: 100px;
-            padding: 1rem 5%;
-            font-size: 0.8rem;
+            margin-top: 70px;
+            padding: 0.8rem 4%;
+            font-size: 0.7rem;
             color: #666;
+            overflow-x: auto;
+            white-space: nowrap;
         }
 
         .breadcrumb a {
@@ -90,105 +104,94 @@
             text-decoration: none;
         }
 
-        .breadcrumb a:hover {
-            color: #b87c4e;
-        }
-
         /* ========== PRODUCT SECTION ========== */
         .product-section {
-            padding: 2rem 5%;
+            padding: 1rem 4% 2rem;
             display: flex;
             flex-wrap: wrap;
-            gap: 3rem;
+            gap: 2rem;
         }
 
-        /* Gallery Kiri */
         .product-gallery {
             flex: 1;
-            min-width: 300px;
+            min-width: 280px;
         }
 
         .main-image {
             background: #f5f0e8;
             border-radius: 20px;
-            height: 450px;
+            height: 350px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 8rem;
+            font-size: 6rem;
             margin-bottom: 1rem;
         }
 
         .thumbnail-list {
             display: flex;
-            gap: 1rem;
+            gap: 0.8rem;
+            flex-wrap: wrap;
         }
 
         .thumbnail {
-            width: 80px;
-            height: 80px;
+            width: 65px;
+            height: 65px;
             background: #f5f0e8;
             border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2rem;
+            font-size: 1.8rem;
             cursor: pointer;
             border: 2px solid transparent;
             transition: all 0.3s;
         }
 
-        .thumbnail:hover, .thumbnail.active {
-            border-color: #b87c4e;
-        }
-
-        /* Info Kanan */
         .product-info {
             flex: 1;
-            min-width: 300px;
+            min-width: 280px;
         }
 
         .vendor {
-            font-size: 0.8rem;
+            font-size: 0.7rem;
             color: #b87c4e;
             text-transform: uppercase;
             letter-spacing: 2px;
-            margin-bottom: 0.5rem;
         }
 
         .product-title {
             font-family: 'Playfair Display', serif;
-            font-size: 2rem;
+            font-size: 1.6rem;
             font-weight: 600;
-            margin-bottom: 0.5rem;
+            margin: 0.3rem 0;
         }
 
         .product-subtitle {
             color: #666;
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
+            font-size: 0.8rem;
+            margin-bottom: 0.8rem;
         }
 
         .price {
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             font-weight: 700;
             color: #b87c4e;
-            margin: 1rem 0;
+            margin: 0.8rem 0;
         }
 
-        /* Badges */
         .badges {
             display: flex;
-            gap: 1rem;
-            margin: 1rem 0;
+            gap: 0.8rem;
+            margin: 0.8rem 0;
             flex-wrap: wrap;
         }
 
         .badge {
             background: #f0f0f0;
-            padding: 0.3rem 0.8rem;
+            padding: 0.2rem 0.7rem;
             border-radius: 20px;
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             font-weight: 500;
         }
 
@@ -197,78 +200,71 @@
             color: #2e7d32;
         }
 
-        /* Size Options */
         .size-section {
-            margin: 1.5rem 0;
+            margin: 1rem 0;
         }
 
         .size-label {
             font-weight: 600;
+            font-size: 0.85rem;
             margin-bottom: 0.5rem;
         }
 
         .size-options {
             display: flex;
-            gap: 1rem;
+            gap: 0.8rem;
+            flex-wrap: wrap;
         }
 
         .size-btn {
-            padding: 0.5rem 1.5rem;
+            padding: 0.4rem 1.2rem;
             border: 1px solid #ddd;
             background: white;
             border-radius: 30px;
             cursor: pointer;
+            font-size: 0.8rem;
             transition: all 0.3s;
         }
 
-        .size-btn:hover, .size-btn.active {
+        .size-btn.active {
             background: #b87c4e;
             color: white;
             border-color: #b87c4e;
         }
 
-        /* Action Buttons */
         .action-buttons {
             display: flex;
-            gap: 1rem;
-            margin: 1.5rem 0;
+            gap: 0.8rem;
+            margin: 1.2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .btn-add, .btn-buy {
+            flex: 1;
+            padding: 0.8rem;
+            border-radius: 40px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-align: center;
+            transition: all 0.3s;
         }
 
         .btn-add {
-            flex: 1;
-            padding: 1rem;
             background: #1a1a1a;
             color: white;
             border: none;
-            border-radius: 40px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: background 0.3s;
-        }
-
-        .btn-add:hover {
-            background: #b87c4e;
         }
 
         .btn-buy {
-            flex: 1;
-            padding: 1rem;
             background: #b87c4e;
             color: white;
             border: none;
-            border-radius: 40px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: background 0.3s;
         }
 
-        .btn-buy:hover {
-            background: #9a663e;
-        }
-
-        /* Accordion Sections */
+        /* Accordion */
         .accordion-section {
-            margin-top: 1.5rem;
+            margin-top: 1rem;
             border-top: 1px solid #eee;
         }
 
@@ -277,20 +273,20 @@
         }
 
         .accordion-header {
-            padding: 1rem 0;
+            padding: 0.8rem 0;
             display: flex;
             justify-content: space-between;
             cursor: pointer;
             font-weight: 600;
+            font-size: 0.9rem;
         }
 
         .accordion-content {
             max-height: 0;
             overflow: hidden;
             transition: max-height 0.3s ease;
-            padding: 0;
             color: #666;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             line-height: 1.6;
         }
 
@@ -299,130 +295,123 @@
             padding-bottom: 1rem;
         }
 
-        /* ========== YOU MAY ALSO LIKE ========== */
+        /* You May Also Like */
         .also-like {
-            padding: 3rem 5%;
+            padding: 2rem 4%;
             background: #faf7f2;
         }
 
         .also-like h2 {
             font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
-            margin-bottom: 2rem;
+            font-size: 1.4rem;
+            margin-bottom: 1.5rem;
         }
 
         .product-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 1rem;
         }
 
         .like-card {
             cursor: pointer;
             transition: transform 0.3s;
-        }
-
-        .like-card:hover {
-            transform: translateY(-5px);
+            background: white;
+            border-radius: 16px;
+            padding: 1rem;
+            text-align: center;
         }
 
         .like-image {
             background: #f5f0e8;
-            border-radius: 16px;
-            height: 200px;
+            border-radius: 12px;
+            height: 140px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 4rem;
-            margin-bottom: 1rem;
+            font-size: 3rem;
+            margin-bottom: 0.8rem;
         }
 
         .like-category {
-            font-size: 0.7rem;
+            font-size: 0.6rem;
             color: #b87c4e;
             letter-spacing: 1px;
         }
 
         .like-title {
             font-weight: 600;
-            margin: 0.5rem 0;
-            font-size: 0.9rem;
+            margin: 0.4rem 0;
+            font-size: 0.75rem;
         }
 
         .like-price {
             color: #b87c4e;
             font-weight: 700;
+            font-size: 0.8rem;
         }
 
-        /* ========== FOOTER ========== */
+        /* Footer */
         .footer {
             background: #1a1a1a;
             color: #ccc;
-            padding: 3rem 5%;
+            padding: 2rem 4%;
         }
 
         .footer-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-bottom: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
         }
 
         .footer-col h4 {
             color: white;
-            margin-bottom: 1rem;
-            font-size: 1rem;
+            margin-bottom: 0.8rem;
+            font-size: 0.9rem;
         }
 
         .footer-col p, .footer-col a {
             color: #999;
             text-decoration: none;
-            font-size: 0.85rem;
-            line-height: 1.8;
-        }
-
-        .footer-col a:hover {
-            color: #b87c4e;
+            font-size: 0.75rem;
+            line-height: 1.6;
         }
 
         .social-icons {
             display: flex;
-            gap: 1rem;
-            margin-top: 1rem;
+            gap: 0.8rem;
+            margin-top: 0.8rem;
+            flex-wrap: wrap;
         }
 
         .social-icon {
-            width: 35px;
-            height: 35px;
+            width: 32px;
+            height: 32px;
             background: #333;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .social-icon:hover {
-            background: #b87c4e;
+            font-size: 0.9rem;
         }
 
         .copyright {
             text-align: center;
-            padding-top: 2rem;
+            padding-top: 1.5rem;
             border-top: 1px solid #333;
-            font-size: 0.75rem;
+            font-size: 0.65rem;
             color: #666;
         }
 
-        /* Chat Button */
         .chat-btn {
             position: fixed;
-            bottom: 30px;
-            right: 30px;
+            bottom: 20px;
+            right: 20px;
             background: #b87c4e;
-            width: 60px;
-            height: 60px;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -430,51 +419,132 @@
             color: white;
             cursor: pointer;
             box-shadow: 0 5px 20px rgba(0,0,0,0.2);
-            transition: all 0.3s;
             z-index: 100;
+            font-size: 1.2rem;
         }
 
-        .chat-btn:hover {
-            transform: scale(1.1);
-            background: #9a663e;
-        }
-
-        /* Responsive */
+        /* ========== RESPONSIVE HP ========== */
         @media (max-width: 768px) {
-            .navbar {
-                flex-direction: column;
-                gap: 1rem;
+            .menu-toggle {
+                display: block;
             }
 
-            .product-section {
+            .nav-links {
+                display: none;
+                width: 100%;
                 flex-direction: column;
+                gap: 0.5rem;
+                padding: 1rem 0;
+                background: white;
+            }
+
+            .nav-links.show {
+                display: flex;
+            }
+
+            .nav-links li {
+                width: 100%;
+            }
+
+            .nav-links a {
+                display: block;
+                padding: 0.5rem 0;
+                white-space: normal;
+            }
+
+            .nav-icons {
+                gap: 0.8rem;
+            }
+
+            .navbar {
+                padding: 0.8rem 4%;
+            }
+
+            .breadcrumb {
+                margin-top: 65px;
             }
 
             .main-image {
-                height: 350px;
-                font-size: 6rem;
+                height: 280px;
+                font-size: 5rem;
             }
 
-            .product-title {
+            .thumbnail {
+                width: 55px;
+                height: 55px;
                 font-size: 1.5rem;
             }
 
-            .price {
+            .product-title {
                 font-size: 1.4rem;
+            }
+
+            .price {
+                font-size: 1.3rem;
             }
 
             .action-buttons {
                 flex-direction: column;
+            }
+
+            .btn-add, .btn-buy {
+                width: 100%;
+            }
+
+            .product-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.8rem;
+            }
+
+            .like-image {
+                height: 120px;
+                font-size: 2.5rem;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .social-icons {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .main-image {
+                height: 240px;
+                font-size: 4rem;
+            }
+
+            .thumbnail {
+                width: 48px;
+                height: 48px;
+                font-size: 1.2rem;
+            }
+
+            .product-title {
+                font-size: 1.2rem;
+            }
+
+            .like-image {
+                height: 100px;
+                font-size: 2rem;
+            }
+
+            .like-title {
+                font-size: 0.7rem;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- ========== NAVIGASI ========== -->
+    <!-- ========== NAVIGASI RESPONSIF ========== -->
     <nav class="navbar">
         <a href="#" class="logo">ARVELUNA</a>
-        <ul class="nav-links">
+        <button class="menu-toggle" id="menuToggle">☰</button>
+        <ul class="nav-links" id="navLinks">
             <li><a href="#">Home</a></li>
             <li><a href="#">Aromatic Candles</a></li>
             <li><a href="#">Essential Oil</a></li>
@@ -495,11 +565,8 @@
 
     <!-- ========== PRODUCT SECTION ========== -->
     <section class="product-section">
-        <!-- Gallery Kiri -->
         <div class="product-gallery">
-            <div class="main-image" id="mainImage">
-                🕯️✨🌸
-            </div>
+            <div class="main-image" id="mainImage">🕯️✨🌸</div>
             <div class="thumbnail-list">
                 <div class="thumbnail active" onclick="changeImage('🕯️✨🌸')">🕯️✨🌸</div>
                 <div class="thumbnail" onclick="changeImage('🕯️🌙✨')">🕯️🌙✨</div>
@@ -508,21 +575,18 @@
             </div>
         </div>
 
-        <!-- Info Kanan -->
         <div class="product-info">
             <div class="vendor">ARVELUNA</div>
             <h1 class="product-title">Buai Aromatic Jar Candles</h1>
             <div class="product-subtitle">by Arveluna Candle</div>
-            <div class="price">Rp 120.000,00</div>
+            <div class="price" id="priceDisplay">Rp 120.000,00</div>
 
-            <!-- Badges -->
             <div class="badges">
                 <span class="badge green">✓ Halal</span>
                 <span class="badge green">✓ No Animal Testing</span>
                 <span class="badge green">✓ Natural Ingredients</span>
             </div>
 
-            <!-- Size Options -->
             <div class="size-section">
                 <div class="size-label">Size:</div>
                 <div class="size-options">
@@ -531,53 +595,41 @@
                 </div>
             </div>
 
-            <!-- Action Buttons -->
             <div class="action-buttons">
                 <button class="btn-add" onclick="addToCart()">Add To Cart</button>
                 <button class="btn-buy" onclick="buyNow()">Buy It Now</button>
             </div>
 
-            <!-- Accordion: Description -->
             <div class="accordion-section">
                 <div class="accordion-item">
-                    <div class="accordion-header" onclick="toggleAccordion(this)">
-                        Description <span>▼</span>
-                    </div>
+                    <div class="accordion-header" onclick="toggleAccordion(this)">Description <span>▼</span></div>
                     <div class="accordion-content">
-                        <p>Nikmati kehangatan dan kenyamanan dengan Buai Aromatic Jar Candle. Lilin dari campuran soy wax dan beeswax alami, diperkaya dengan minyak atsiri cinnamon, vanila, dan lavender, serta dekorasi bunga kering dari kebun Rumah Arveluna.</p>
-                        <p style="margin-top: 0.5rem;"><strong>Key Emotion:</strong> Calming, Warm, Sweet, Caring</p>
+                        <p>Nikmati kehangatan dan kenyamanan dengan Buai Aromatic Jar Candle. Lilin dari campuran soy wax dan beeswax alami, diperkaya dengan minyak atsiri cinnamon, vanila, dan lavender.</p>
+                        <p><strong>Key Emotion:</strong> Calming, Warm, Sweet, Caring</p>
                     </div>
                 </div>
                 <div class="accordion-item">
-                    <div class="accordion-header" onclick="toggleAccordion(this)">
-                        Cara Pakai <span>▼</span>
-                    </div>
+                    <div class="accordion-header" onclick="toggleAccordion(this)">Cara Pakai <span>▼</span></div>
                     <div class="accordion-content">
-                        <p>Nyalakan lilin dengan korek api atau pemantik api. Letakkan di permukaan yang stabil dan tahan panas. Jangan biarkan lilin menyala tanpa pengawasan. Pastikan ruangan memiliki sirkulasi udara yang baik.</p>
+                        <p>Nyalakan lilin dengan korek api atau pemantik api. Letakkan di permukaan yang stabil dan tahan panas. Jangan biarkan lilin menyala tanpa pengawasan.</p>
                     </div>
                 </div>
                 <div class="accordion-item">
-                    <div class="accordion-header" onclick="toggleAccordion(this)">
-                        Ingredients <span>▼</span>
-                    </div>
+                    <div class="accordion-header" onclick="toggleAccordion(this)">Ingredients <span>▼</span></div>
                     <div class="accordion-content">
-                        <p>Soy wax, Beeswax, Essential Oil (Cinnamon, Vanilla, Lavender), Dried Flowers from Arveluna Garden.</p>
+                        <p>Soy wax, Beeswax, Essential Oil (Cinnamon, Vanilla, Lavender), Dried Flowers.</p>
                     </div>
                 </div>
                 <div class="accordion-item">
-                    <div class="accordion-header" onclick="toggleAccordion(this)">
-                        Benefit <span>▼</span>
-                    </div>
+                    <div class="accordion-header" onclick="toggleAccordion(this)">Benefit <span>▼</span></div>
                     <div class="accordion-content">
-                        <p>✓ Menenangkan pikiran<br>✓ Meningkatkan mood<br>✓ Menghilangkan stres<br>✓ Membantu tidur lebih nyenyak</p>
+                        <p>✓ Menenangkan pikiran<br>✓ Meningkatkan mood<br>✓ Membantu tidur lebih nyenyak</p>
                     </div>
                 </div>
                 <div class="accordion-item">
-                    <div class="accordion-header" onclick="toggleAccordion(this)">
-                        Best For <span>▼</span>
-                    </div>
+                    <div class="accordion-header" onclick="toggleAccordion(this)">Best For <span>▼</span></div>
                     <div class="accordion-content">
-                        <p>✓ Relaksasi setelah bekerja<br>✓ Meditasi & yoga<br>✓ Hadiah untuk orang tersayang<br>✓ Menciptakan suasana nyaman di rumah</p>
+                        <p>✓ Relaksasi setelah bekerja<br>✓ Meditasi & yoga<br>✓ Hadiah untuk orang tersayang</p>
                     </div>
                 </div>
             </div>
@@ -591,32 +643,26 @@
             <div class="like-card" onclick="alert('Rayu Aromatic Jar Candles')">
                 <div class="like-image">🕯️💛</div>
                 <div class="like-category">CANDLE</div>
-                <div class="like-title">Rayu Aromatic Jar Candles by Arveluna</div>
-                <div class="like-price">From Rp 120.000,00</div>
+                <div class="like-title">Rayu Aromatic Jar Candles</div>
+                <div class="like-price">Rp 120.000</div>
             </div>
             <div class="like-card" onclick="alert('1963 Aromatic Jar Candles')">
                 <div class="like-image">🕯️🤎</div>
                 <div class="like-category">CANDLE</div>
-                <div class="like-title">1963 Aromatic Jar Candles by Arveluna</div>
-                <div class="like-price">From Rp 120.000,00</div>
+                <div class="like-title">1963 Aromatic Jar Candles</div>
+                <div class="like-price">Rp 120.000</div>
             </div>
             <div class="like-card" onclick="alert('Buai Eau de Parfum')">
                 <div class="like-image">🌸✨</div>
                 <div class="like-category">EAU DE PARFUM</div>
-                <div class="like-title">Buai Eau de Parfum by Arveluna</div>
-                <div class="like-price">From Rp 105.000,00</div>
+                <div class="like-title">Buai Eau de Parfum</div>
+                <div class="like-price">Rp 105.000</div>
             </div>
             <div class="like-card" onclick="alert('Buai Signature Essential Oil')">
                 <div class="like-image">🌿✨</div>
                 <div class="like-category">ESSENTIAL OIL</div>
-                <div class="like-title">Buai Signature Essential Oil Blend</div>
-                <div class="like-price">From Rp 98.000,00</div>
-            </div>
-            <div class="like-card" onclick="alert('Body Lotion Buai')">
-                <div class="like-image">🧴✨</div>
-                <div class="like-category">BODY LOTION</div>
-                <div class="like-title">Body Lotion Arveluna BUAI</div>
-                <div class="like-price">From Rp 85.000,00</div>
+                <div class="like-title">Buai Signature Essential Oil</div>
+                <div class="like-price">Rp 98.000</div>
             </div>
         </div>
     </section>
@@ -631,7 +677,6 @@
                     <div class="social-icon" onclick="alert('Instagram: @arveluna.candle')">📷</div>
                     <div class="social-icon" onclick="alert('Facebook: Arveluna Candle')">📘</div>
                     <div class="social-icon" onclick="alert('TikTok: @arveluna')">🎵</div>
-                    <div class="social-icon" onclick="alert('Shopee: Arveluna Official')">🛍️</div>
                 </div>
             </div>
             <div class="footer-col">
@@ -653,12 +698,17 @@
         </div>
     </footer>
 
-    <!-- Chat Button -->
-    <div class="chat-btn" onclick="alert('Halo! Ada yang bisa kami bantu? 💬')">
-        💬
-    </div>
+    <div class="chat-btn" onclick="alert('Halo! Ada yang bisa kami bantu? 💬')">💬</div>
 
     <script>
+        // Hamburger menu untuk HP
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('show');
+        });
+
         // Change Gallery Image
         function changeImage(emoji) {
             document.getElementById('mainImage').innerHTML = emoji;
@@ -668,7 +718,6 @@
             event.target.classList.add('active');
         }
 
-        // Select Size
         let currentPrice = 120000;
         let currentSize = '90 gr';
 
@@ -677,10 +726,9 @@
             btn.classList.add('active');
             currentSize = size;
             currentPrice = price;
-            document.querySelector('.price').innerHTML = `Rp ${price.toLocaleString('id-ID')},00`;
+            document.getElementById('priceDisplay').innerHTML = `Rp ${price.toLocaleString('id-ID')},00`;
         }
 
-        // Add to Cart
         function addToCart() {
             alert(`🛒 ${currentSize} Arveluna Candle ditambahkan ke keranjang!\nTotal: Rp ${currentPrice.toLocaleString('id-ID')},00`);
         }
@@ -689,7 +737,6 @@
             alert(`💳 Lanjutkan pembayaran untuk ${currentSize} Arveluna Candle\nTotal: Rp ${currentPrice.toLocaleString('id-ID')},00`);
         }
 
-        // Accordion Toggle
         function toggleAccordion(header) {
             const content = header.nextElementSibling;
             const isActive = content.classList.contains('active');
@@ -703,15 +750,8 @@
             }
         }
 
-        // Account Icon
-        document.querySelector('.nav-icons span:nth-child(2)').addEventListener('click', function() {
-            alert('Halaman Akun akan segera hadir ✨\nSilakan login atau daftar');
-        });
-
-        // Cart Icon
-        document.querySelector('.nav-icons span:last-child').addEventListener('click', function() {
-            alert('Keranjang belanja Anda masih kosong 🛒');
-        });
+        document.querySelector('.nav-icons span:nth-child(2)').addEventListener('click', () => alert('Halaman Akun akan segera hadir ✨'));
+        document.querySelector('.nav-icons span:last-child').addEventListener('click', () => alert('Keranjang belanja Anda masih kosong 🛒'));
     </script>
 </body>
 </html>
